@@ -20,3 +20,11 @@ class Category {
     [ValidateSet(0, 1, 2)][int]$classification
     [AllowNull()][Category[]]$subcategories
 }
+
+class CreateTransaction {
+    [string]$description
+    [string]$date
+    [decimal]$value
+    [string]$account
+    [string]$category
+}
