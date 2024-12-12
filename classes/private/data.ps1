@@ -1,0 +1,1 @@
+$MONETO_API_URL = "https://vps.gabrielbizzi.com.br"
