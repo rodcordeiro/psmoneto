@@ -1,1 +1,1 @@
-$MONETO_API_URL = "https://vps.gabrielbizzi.com.br"
+$script:MONETO_API_URL = "https://vps.gabrielbizzi.com.br"

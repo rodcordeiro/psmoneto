@@ -1,4 +1,4 @@
-function Get-Category {
+﻿function Get-Category {
     [CmdletBinding()]
     param ()
     begin {
@@ -8,7 +8,7 @@ function Get-Category {
         $url = [URI]::EscapeUriString("$MONETO_API_URL/api/v1/categories")
     }
     process {
-        [Category[]]$response = Invoke-RestMethod $url -Method 'GET' -Headers $headers 
+        [Category[]]$response = Invoke-RestMethod $url -Method 'GET' -Headers $headers
         Write-Output $response
     }
     end {}

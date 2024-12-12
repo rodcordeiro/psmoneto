@@ -1,4 +1,4 @@
-function Invoke-Authentication {
+﻿function Invoke-Authentication {
     <#
 .SYNOPSIS
     Authenticate to moneto
@@ -22,7 +22,7 @@ function Invoke-Authentication {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory, ValueFromPipelineByPropertyName)][ValidatePattern("[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+")][string]$email,
-        [Parameter(Mandatory, ValueFromPipelineByPropertyName)][SecureString]$password 
+        [Parameter(Mandatory, ValueFromPipelineByPropertyName)][SecureString]$password
     )
     begin {
         $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
@@ -35,10 +35,10 @@ function Invoke-Authentication {
     `"email`": `"$($email)`",
     `"password`": `"$(Unprotect-SecureString $password)`"
 }
-"@ 
+"@
 
 
-        $response = Invoke-RestMethod $url -Method 'POST' -Headers $headers -Body $body        
+        $response = Invoke-RestMethod $url -Method 'POST' -Headers $headers -Body $body
         $env:MONETO_AUTH_TOKEN = $response.access_token
 
     }

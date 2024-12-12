@@ -1,4 +1,4 @@
-function Get-PaymentTypes {
+﻿function Get-PaymentType {
     [CmdletBinding()]
     param()
     begin {
@@ -8,7 +8,7 @@ function Get-PaymentTypes {
         $url = [URI]::EscapeUriString("$MONETO_API_URL/api/v1/payments")
     }
     process {
-        [PaymentType[]]$response = Invoke-RestMethod $url -Method 'GET' -Headers $headers 
+        [PaymentType[]]$response = Invoke-RestMethod $url -Method 'GET' -Headers $headers
         Write-Output $response
-    }	
+    }
 }

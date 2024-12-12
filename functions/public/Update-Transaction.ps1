@@ -1,4 +1,4 @@
-function Update-Transaction {
+﻿function Update-Transaction {
     <#
 .SYNOPSIS
     Update a transaction
@@ -14,7 +14,7 @@ function Update-Transaction {
     param (
         # Transaction to be updated
         [Parameter(Mandatory = $true, ValueFromPipeline)]
-        # [ValidatePattern("^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$")]
+        [ValidatePattern("^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$")]
         [string]$id,
         # Account to be used, if not specified the user will be prompted to select it in a listbox.
         [Parameter(Mandatory = $false, ValueFromPipeline)]
@@ -39,7 +39,7 @@ function Update-Transaction {
         $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
         $headers.Add("Content-Type", "application/json")
         $headers.Add("Authorization", "Bearer $($env:MONETO_AUTH_TOKEN)")
-       
+
         $accounts = (Get-Account)
         $categories = (Get-Category)
     }
@@ -57,7 +57,7 @@ function Update-Transaction {
         $transaction.description = if ($description) { $description }
         $transaction.value = if ($value) { $value }
         $transaction.date = if ($date) { get-date -Format 'yyyy-MM-ddTHH:mm:ss' -Date $date }
-       
+
         if (($transaction.value) -and ($transaction.value -eq 0)) {
             throw "O valor da transacao nao pode ser zero"
         }
@@ -84,8 +84,8 @@ function Update-Transaction {
         $body = $transaction | Remove-Null | ConvertTo-Json -Depth 1
 
         $url = [URI]::EscapeUriString("$MONETO_API_URL/api/v1/transactions/$($transaction.id)")
-        
-        $response = Invoke-RestMethod $url -Method 'PATCH' -Body $body -Headers $headers 
+
+        $response = Invoke-RestMethod $url -Method 'PATCH' -Body $body -Headers $headers
         Write-Output $response
     }
     end {}

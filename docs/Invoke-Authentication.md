@@ -66,9 +66,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### [System.string] email
-### The email to authenticate
+###     The email to authenticate
 ### [System.SecureString] password
-### The password secure string to be used
+###     The password secure string to be used
 ## OUTPUTS
 
 ## NOTES

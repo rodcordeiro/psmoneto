@@ -5,31 +5,46 @@ online version:
 schema: 2.0.0
 ---
 
-# New-Transaction
+# Update-Transaction
 
 ## SYNOPSIS
-Create a transaction
+Update a transaction
 
 ## SYNTAX
 
 ```
-New-Transaction [[-account] <String>] [[-category] <String>] [[-description] <String>] [[-value] <Decimal>]
- [[-date] <DateTime>] [-AccountMatchExact] [<CommonParameters>]
+Update-Transaction [-id] <String> [[-account] <String>] [[-category] <String>] [[-description] <String>]
+ [[-value] <Decimal>] [[-date] <DateTime>] [-AccountMatchExact] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This function creates a new transaction entry at moneto
+This function update transaction entry at banky
 
 ## EXAMPLES
 
 ### EXEMPLO 1
 ```
-New-Transaction
+Update-BankyTransaction
 ```
 
-Create a new transaction entry at moneto
+Update a transaction entry at banky
 
 ## PARAMETERS
+
+### -id
+Transaction to be updated
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -account
 Account to be used, if not specified the user will be prompted to select it in a listbox.
@@ -40,7 +55,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -55,7 +70,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -70,7 +85,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 4
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -85,7 +100,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 5
 Default value: 0
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -100,7 +115,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 6
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
