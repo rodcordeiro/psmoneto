@@ -28,6 +28,7 @@ function New-Transaction {
         [Parameter(Mandatory = $false, ValueFromPipeline)]
         [datetime]$date,
         # If account parameter is specified, the script will search for the account with a similar name, breaking if it returns more than one account. This switch disables the like filter.
+        [Parameter(Mandatory = $false, ValueFromPipeline)]
         [switch]$AccountMatchExact
     )
     begin {
