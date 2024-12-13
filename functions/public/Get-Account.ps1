@@ -1,4 +1,4 @@
-function Get-Account {
+﻿function Get-Account {
     [CmdletBinding()]
     param()
     begin {
@@ -8,7 +8,7 @@ function Get-Account {
         $url = [URI]::EscapeUriString("$MONETO_API_URL/api/v1/accounts")
     }
     process {
-        [Account[]]$response = Invoke-RestMethod $url -Method 'GET' -Headers $headers 
+        [Account[]]$response = Invoke-RestMethod $url -Method 'GET' -Headers $headers
         Write-Output $response
-    }	
+    }
 }

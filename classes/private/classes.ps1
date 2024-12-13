@@ -60,10 +60,8 @@ class TransactionWithExpandedCategory {
 }
 
 class UpdateAccount {
-    
     [AllowNull()][string]$name
     [AllowNull()][float]$ammount
     [AllowNull()][float]$threshold
     [AllowNull()][string]$paymentType
-    
 }

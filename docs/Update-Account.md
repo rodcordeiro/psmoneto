@@ -5,49 +5,49 @@ online version:
 schema: 2.0.0
 ---
 
-# New-Transaction
+# Update-Account
 
 ## SYNOPSIS
-Create a transaction
+Updates an account
 
 ## SYNTAX
 
 ```
-New-Transaction [[-account] <String>] [[-category] <String>] [[-description] <String>] [[-value] <Decimal>]
- [[-date] <DateTime>] [-AccountMatchExact] [<CommonParameters>]
+Update-Account [-id] <String> [[-Name] <String>] [[-Ammount] <Decimal>] [[-PaymentType] <String>]
+ [[-Threshold] <Decimal>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This function creates a new transaction entry at moneto
+This function Updates an account entry at moneto
 
 ## EXAMPLES
 
 ### EXEMPLO 1
 ```
-New-Transaction
+Update-Account
 ```
 
-Create a new transaction entry at moneto
+Updates an account
 
 ## PARAMETERS
 
-### -account
-Account to be used, if not specified the user will be prompted to select it in a listbox.
+### -id
+Account uuid
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -category
-Category to be used, if not specified the user will be prompted to select it in a listbox.
+### -Name
+Account Name
 
 ```yaml
 Type: String
@@ -61,23 +61,10 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -description
-Transaction description
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -value
-Transaction value
+### -Ammount
+Account ammount.
+e.g.
+10, 10.5, 1, 0.58
 
 ```yaml
 Type: Decimal
@@ -85,39 +72,41 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 3
 Default value: 0
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -date
-Transaction date at ISO format
+### -PaymentType
+Account payment type name.
+e.g.
+Debit, Credit, Investiment
 
 ```yaml
-Type: DateTime
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -AccountMatchExact
-If account parameter is specified, the script will search for the account with a similar name, breaking if it returns more than one account.
-This switch disables the like filter.
+### -Threshold
+Account threshold.
+This threshold is used to set alarms for account limits
 
 ```yaml
-Type: SwitchParameter
+Type: Decimal
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: False
+Position: 5
+Default value: 0
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```

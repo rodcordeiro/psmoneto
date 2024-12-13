@@ -1,4 +1,4 @@
-function New-Transaction {
+﻿function New-Transaction {
     <#
 .SYNOPSIS
     Create a transaction
@@ -48,7 +48,7 @@ function New-Transaction {
             $date = $PSItem.date
             $AccountMatchExact = $PSItem.AccountMatchExact
         }
-        
+
         if (!$account) {
 
             $accountForm = (Invoke-ListBox -title 'Select Account' -content 'Selecione uma conta para prosseguir' -map {

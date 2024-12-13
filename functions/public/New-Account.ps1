@@ -1,4 +1,4 @@
-function New-Account {
+﻿function New-Account {
     <#
 .SYNOPSIS
     Creates a new account
@@ -16,7 +16,7 @@ function New-Account {
         # Account Name
         [Parameter(Mandatory = $true)]
         [string]$Name,
-        
+
         # Account ammount. e.g. 10, 10.5, 1, 0.58
         [Parameter(Mandatory = $true)]
         [decimal]$Amount,
@@ -34,7 +34,7 @@ function New-Account {
         $headers.Add("Content-Type", "application/json")
         $headers.Add("Authorization", "Bearer $($env:MONETO_AUTH_TOKEN)")
         $url = [URI]::EscapeUriString("$MONETO_API_URL/api/v1/accounts")
-        [PaymentType[]]$payments = (Get-PaymentTypes)
+        [PaymentType[]]$payments = (Get-PaymentType)
     }
     process {
         if ($null -ne $PSItem ) {
@@ -64,14 +64,14 @@ function New-Account {
         }
         if (!$selectedPaymentType) { throw "Payment not found" }
         if (($selectedPaymentType | Measure-Object).Count -gt 1) { throw "Payment filter returned more than one value. Please be more specific." }
-        
+
         $body = @{
             name        = $Name
             amount      = $Amount
             paymentType = $selectedPaymentType.uuid
             threshold   = $Threshold
         } | ConvertTo-Json
-        
+
         $response = Invoke-RestMethod -Method Post -Uri $url -Headers $headers -Body $body
         Write-Output $response
     }
