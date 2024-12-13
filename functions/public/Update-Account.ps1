@@ -37,7 +37,7 @@
         $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
         $headers.Add("Content-Type", "application/json")
         $headers.Add("Authorization", "Bearer $($env:MONETO_AUTH_TOKEN)")
-        $payments = (Get-PaymentTypes)
+        $payments = (Get-PaymentType)
     }
 
     process {

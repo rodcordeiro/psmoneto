@@ -34,7 +34,7 @@
         $headers.Add("Content-Type", "application/json")
         $headers.Add("Authorization", "Bearer $($env:MONETO_AUTH_TOKEN)")
         $url = [URI]::EscapeUriString("$MONETO_API_URL/api/v1/accounts")
-        [PaymentType[]]$payments = (Get-PaymentTypes)
+        [PaymentType[]]$payments = (Get-PaymentType)
     }
     process {
         if ($null -ne $PSItem ) {
