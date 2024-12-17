@@ -8,8 +8,18 @@
         $url = [URI]::EscapeUriString("$MONETO_API_URL/api/v1/categories")
     }
     process {
-        [Category[]]$response = Invoke-RestMethod $url -Method 'GET' -Headers $headers
-        Write-Output $response
+        $response = Invoke-RestMethod $url -Method 'GET' -Headers $headers
+        [Category[]]$data = @()
+
+        foreach ($category in [Category[]]$response) {
+            $data += $category
+            if ($category.subcategories) {
+                $data += $category.subcategories
+            }
+        }
+        
+        Write-Output $data
     }
+    
     end {}
 }

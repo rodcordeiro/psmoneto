@@ -71,28 +71,18 @@
         if (!$selectedAccount) { throw "Account not found" }
         if (($selectedAccount | Measure-Object).Count -gt 1) { throw "Account filter returned more than one value. Please be more specific." }
         if (!$category) {
-
+            
             $categoryForm = (Invoke-ListBox -title 'Select Category' -content 'Selecione uma categoria para prosseguir' -map {
                     param($listBox)
                     foreach ($item in $categories) {
                         [void] $listBox.Items.Add("$(if($item.positive){"(+)"}else{"(-)"}) $($item.name)")
-                        if ($category.subcategories) {
-                            foreach ($subcategory in $category.subcategories) {
-                                [void] $listBox.Items.Add("$(if($subcategory.positive){"(+)"}else{"(-)"}) $($subcategory.name)")
-                            }
-                        }
                     }
                 })
 
             if ($categoryForm) {
                 $category = $categoryForm.ToString().Split(" ")[1]
                 foreach ($cat in $categories) {
-                    if ($cat.name -eq $category) { $selectedCategory = $cat }
-                    if ($cat.subcategories) {
-                        foreach ($subcategory in $cat.subcategories) {
-                            if ($subcategory.name -eq $category) { $selectedCategory = $subcategory }
-                        }
-                    }
+                    $selectedAccount = $($categories | Where-Object { $_.name -eq $category })
                 }
             }
             else {
