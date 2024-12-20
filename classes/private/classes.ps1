@@ -18,6 +18,7 @@ class Category {
     [bool]$positive
     [bool]$internal
     [bool]$transient
+    [bool]$grouper
     # [ValidateSet('duty', 'necessary', 'wish')]
     [string]$classification
     [AllowNull()][Category[]]$subcategories
