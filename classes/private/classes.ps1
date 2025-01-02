@@ -21,8 +21,11 @@ class Category {
     [bool]$grouper
     # [ValidateSet('duty', 'necessary', 'wish')]
     [string]$classification
+    [bool]$transferOrigin
+    [bool]$transferDestination
     [AllowNull()][Category[]]$subcategories
 }
+
 
 class CreateTransaction {
     [string]$description
