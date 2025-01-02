@@ -17,9 +17,9 @@
                 $data += $category.subcategories
             }
         }
-        
+
         Write-Output $data
     }
-    
+
     end {}
 }

@@ -71,7 +71,7 @@
         if (!$selectedAccount) { throw "Account not found" }
         if (($selectedAccount | Measure-Object).Count -gt 1) { throw "Account filter returned more than one value. Please be more specific." }
         if (!$category) {
-            
+
             $categoryForm = (Invoke-ListBox -title 'Select Category' -content 'Selecione uma categoria para prosseguir' -map {
                     param($listBox)
                     foreach ($item in $categories) {
